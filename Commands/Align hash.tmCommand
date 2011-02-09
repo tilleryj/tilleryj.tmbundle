@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+lines = STDIN.read.split("\n")
+
+return 0 if lines.size &lt;= 1
+
+max_key_length = lines.map{|l| l.split("=&gt;")[0].strip.size }.max
+leading_space = lines.first.match(/(\s*)/)[1]
+
+new_lines = lines.map do |l|
+	parts = l.split("=&gt;")
+
+	if (parts.size == 2)
+		key_part = parts[0]
+		value_part = parts[1]
+	else
+		key_part = l.strip
+		value_part = "nil"
+	end
+	
+	key = key_part.strip.ljust(max_key_length)
+	value = value_part.strip
+	value = "#{value}," unless value.match(/,$/)
+
+	[leading_space, key, " =&gt; ", value].join
+end
+
+
+puts new_lines.join("\n")</string>
+	<key>fallbackInput</key>
+	<string>none</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>~@h</string>
+	<key>name</key>
+	<string>Align hash</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>2CDD05C5-A86D-456B-B9F3-A4D89570D626</string>
+</dict>
+</plist>
