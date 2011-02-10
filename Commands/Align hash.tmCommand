@@ -44,6 +44,8 @@ puts new_lines.join("\n")</string>
 	<string>Align hash</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.ruby</string>
 	<key>uuid</key>
 	<string>2CDD05C5-A86D-456B-B9F3-A4D89570D626</string>
 </dict>

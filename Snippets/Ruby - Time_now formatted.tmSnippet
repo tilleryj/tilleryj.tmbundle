@@ -6,6 +6,10 @@
 	<string>Time.now.strftime("%m/%d/%Y")</string>
 	<key>name</key>
 	<string>Ruby - Time.now formatted</string>
+	<key>scope</key>
+	<string>source.ruby</string>
+	<key>tabTrigger</key>
+	<string>tn</string>
 	<key>uuid</key>
 	<string>34EB52BC-0C16-4B96-AD19-8AC299A78620</string>
 </dict>
