@@ -11,25 +11,25 @@ lines = STDIN.read.split("\n")
 
 return 0 if lines.size &lt;= 1
 
-max_key_length = lines.map{|l| l.split("=&gt;")[0].strip.size }.max
+max_key_length = lines.map{|l| l.split(":")[0].strip.size }.max
 leading_space = lines.first.match(/(\s*)/)[1]
 
 new_lines = lines.map do |l|
-	parts = l.split("=&gt;")
+	parts = l.split(":")
 
 	if (parts.size == 2)
 		key_part = parts[0]
 		value_part = parts[1]
 	else
 		key_part = l.strip
-		value_part = "nil"
+		value_part = "null"
 	end
 	
 	key = key_part.strip.ljust(max_key_length)
 	value = value_part.strip
 	value = "#{value}," unless value.match(/,$/)
 
-	[leading_space, key, " =&gt; ", value].join
+	[leading_space, key, ": ", value].join
 end
 
 
@@ -41,12 +41,12 @@ puts new_lines.join("\n")</string>
 	<key>keyEquivalent</key>
 	<string>~@h</string>
 	<key>name</key>
-	<string>RB - Align hash</string>
+	<string>JS - Align hash</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>source.ruby</string>
+	<string>source.js</string>
 	<key>uuid</key>
-	<string>2CDD05C5-A86D-456B-B9F3-A4D89570D626</string>
+	<string>F81D5C14-E644-4787-9A1F-A73BF5EB31D8</string>
 </dict>
 </plist>
