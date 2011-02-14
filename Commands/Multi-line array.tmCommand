@@ -8,18 +8,25 @@
 	<string>#!/usr/bin/env ruby
 
 line = STDIN.read
-m = line.match(/(.*)\[(.*)\](.*)/)
-
-return unless m
-
-parts = m[1..3]
 
 leader = line.match(/^(\s*)/)[1]
-leading_spaces = leader + (" " * 2)
 
-prefix = parts[0] + "[\n#{leading_spaces}"
-body = parts[1].split(",").map(&amp;:strip).join(",\n#{leading_spaces}")
-suffix = "\n#{leader}]" + parts[2]
+m = line.match(/(.*)\[(.*)\](.*)/)
+if m
+	parts = m[1..3]
+	leading_spaces = leader + (" " * 2)
+	prefix = parts[0] + "[\n#{leading_spaces}"
+	suffix = "\n#{leader}]" + parts[2]
+
+	body_string = parts[1]
+else
+	leading_spaces = leader
+	prefix = leader
+	suffix = "\n"
+	body_string = line.strip
+end
+
+body = body_string.split(",").map(&amp;:strip).join(",\n#{leading_spaces}")
 
 print  prefix + body + suffix
 
