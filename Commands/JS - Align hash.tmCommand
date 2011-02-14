@@ -11,25 +11,32 @@ lines = STDIN.read.split("\n")
 
 return 0 if lines.size &lt;= 1
 
-max_key_length = lines.map{|l| l.split(":")[0].strip.size }.max + 2
+max_key_length = lines.map do |l| 
+	parts = l.split(":")
+	parts.empty? ? 0 : parts[0].strip.size 
+end.max + 2
 leading_space = lines.first.match(/(\s*)/)[1]
 
 new_lines = lines.map do |l|
-	parts = l.split(":")
-
-	if (parts.size == 2)
-		key_part = parts[0] + ":"
-		value_part = parts[1]
+	if (l.strip == "")
+		""
 	else
-		key_part = l.strip + ":"
-		value_part = "null"
-	end
+		parts = l.split(":")
 	
-	key = key_part.strip.ljust(max_key_length)
-	value = value_part.strip
-	value = "#{value}," unless value.match(/,$/)
+		if (parts.size == 2)
+			key_part = parts[0] + ":"
+			value_part = parts[1]
+		else
+			key_part = l.strip + ":"
+			value_part = "null"
+		end
+	
+		key = key_part.strip.ljust(max_key_length)
+		value = value_part.strip
+		value = "#{value}," unless value.match(/,$/)
 
-	[leading_space, key, value].join
+		[leading_space, key, value].join
+	end
 end
 
 
