@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>new Ajax.Request("$1", {
+	method: "${2:get|post}",
+	evalScripts: ${3:true|false},
+	evalJSON: ${4:true|false},
+	asynchronous: true,
+	parameters: {$5},
+	onSuccess: function(response) {$6}
+});
+$0
+</string>
+	<key>name</key>
+	<string>untitled</string>
+	<key>tabTrigger</key>
+	<string>ajax</string>
+	<key>uuid</key>
+	<string>6CFBFBBE-637C-4E30-8A3A-CEF2B44CF6BA</string>
+</dict>
+</plist>
