@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>.strftime("%m/%d/%Y")</string>
+	<string>${1:1.year.ago}.strftime("%m/%d/%Y")</string>
 	<key>name</key>
 	<string>Ruby - .strftime("...</string>
 	<key>tabTrigger</key>
